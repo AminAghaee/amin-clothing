@@ -39,11 +39,11 @@ const Directory = ({children}) => {
         }
       ];
       
-    const [section, setSection] = useState(sections);
+    const [section] = useState(sections);
 
     return (
         <div className='directory-menu'>
-            {section.map(({title, imageUrl, id , size}) => <MenuItem title={title} key={id} imageUrl={imageUrl} size={size}/>)}
+            {section.map(({ id , ...rest}) => <MenuItem key={id} {...rest}/>)}
         </div>
     )
 }
