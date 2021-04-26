@@ -5,7 +5,7 @@ import FormInput from "./../form-input/form-input.component";
 import "./sign-in.styles.scss";
 import { auth } from "./../../firebase/firebase.utils";
 
-export default class SignIn extends Component {
+class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -69,3 +69,5 @@ export default class SignIn extends Component {
     );
   }
 }
+
+export default SignIn;
