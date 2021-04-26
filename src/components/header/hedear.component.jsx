@@ -4,6 +4,7 @@ import "./header.styles.scss";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { auth } from "./../../firebase/firebase.utils";
 import { useSelector, useDispatch } from "react-redux";
+import { SET_CURRENT_USER } from "./../../redux/user/user.types";
 
 const Header = () => {
   const { currentUser } = useSelector((state) => ({
@@ -15,7 +16,7 @@ const Header = () => {
   const signOut = () => {
     try {
       auth.signOut();
-      dispatch({ type: "SET_CURRENT_USER", payload: {} });
+      dispatch({ type: SET_CURRENT_USER, payload: {} });
     } catch (error) {
       console.log(error);
     }
