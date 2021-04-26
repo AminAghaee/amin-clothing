@@ -2,16 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./header.styles.scss";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
-import { auth } from "./../../firebase/firebase.utils";
+import { auth } from "../../firebase/firebase.utils";
 import { useSelector, useDispatch } from "react-redux";
-import { SET_CURRENT_USER } from "./../../redux/user/user.types";
+import { SET_CURRENT_USER } from "../../redux/user/user.types";
+import CartIcon from "../cart-icon/cart-icon.component";
+import { CartDropdown } from "../cart-dropdown/cart-dropdown.component";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const hidden = useSelector(({ cart: { hidden } }) => hidden);
   const { currentUser } = useSelector((state) => ({
     currentUser: state.user.currentUser,
   }));
-
-  const dispatch = useDispatch();
 
   const signOut = () => {
     try {
@@ -43,7 +46,11 @@ const Header = () => {
             SIGN IN
           </Link>
         )}
+        <Link className="option" to="/">
+          <CartIcon />
+        </Link>
       </div>
+      {!hidden && <CartDropdown />}
     </div>
   );
 };
