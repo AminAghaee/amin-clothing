@@ -46,7 +46,7 @@ const Header = () => {
             SIGN IN
           </Link>
         )}
-        <Link className="option" to="/">
+        <Link className="option">
           <CartIcon />
         </Link>
       </div>
